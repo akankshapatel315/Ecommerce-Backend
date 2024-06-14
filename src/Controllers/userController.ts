@@ -12,7 +12,7 @@ const register = async (req:Request, res:Response) => {
     res.status(201).json({ message: 'User registered successfully', user });
   } catch (error:any) {
     res.status(500).json({ message: error.message });
-  }
+  } 
 };
 
 const login = async (req:Request, res:Response) => {
