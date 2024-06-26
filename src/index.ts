@@ -3,6 +3,8 @@ const dbConnect = require("../src/config/dbConnection")
 const cors= require("cors");
 const mainRouter= require("./Routers/index")
 import {Response,Request}  from "express"
+const stripee = require('stripe')('sk_test_51PVaDt083iHcWeEmzSJVT17dEeFWFZljOakBG3HcKOf8arwRy5bu0HIuzEhe8FeI0uNGLeMtRgcOVkKVewKRoMDL00WQ63LtDJ');
+
 const app = express();
 
 const port = 3000;
