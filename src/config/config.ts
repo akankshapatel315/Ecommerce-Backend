@@ -1,4 +1,3 @@
-const config= {"SECRET_KEY":"Akanksha"}
 const dotenv = require("dotenv")
 const path = require("path")
 
@@ -9,4 +8,4 @@ module.exports = {
 };
 
 
-module.exports=config
+module.exports={envVar}
