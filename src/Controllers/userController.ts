@@ -18,6 +18,7 @@ const register = async (req:Request, res:Response) => {
 const login = async (req:Request, res:Response) => {
   try {
     const { email, password } = req.body;
+    console.log('req.body', req.body)
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -26,9 +27,10 @@ const login = async (req:Request, res:Response) => {
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign({ userId: user._id }, config.SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1h' });
     res.status(200).json({ ...user,token });
   } catch (error:any) {
+    console.log('error', error)
     res.status(500).json({ message: error.message });
   }
 };

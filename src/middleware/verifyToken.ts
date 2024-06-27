@@ -1,6 +1,5 @@
 import {Response,Request}  from "express"
 const jwt = require("jsonwebtoken")
-const config= require("../config/config")
 
 const authenticateToken = (req:any, res:Response, next:Function) => {
     const authHeader = req.headers['authorization'];
@@ -10,8 +9,7 @@ const authenticateToken = (req:any, res:Response, next:Function) => {
       return res.status(401).json({ message: 'Access token not found' });
     }
   
-    // Verify the token
-    jwt.verify(token, config.SECRET_KEY, (err:any, user:any) => {
+    jwt.verify(token, process.env.SECRET_KEY, (err:any, user:any) => {
       if (err) {
         return res.status(403).json({ message: 'Invalid token' });
       }
@@ -19,3 +17,6 @@ const authenticateToken = (req:any, res:Response, next:Function) => {
       next();
     });
   };
+
+
+  module.exports={ authenticateToken}
