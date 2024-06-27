@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
     role: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Role'
-    }
-  });
+    },
+    imageUrl:{ type: String, required: false }
+  },{time_stamp:true});
   module.exports = mongoose.model('User', userSchema);  

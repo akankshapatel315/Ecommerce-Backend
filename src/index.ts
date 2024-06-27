@@ -1,12 +1,14 @@
 const express = require("express");
 const dbConnect = require("../src/config/dbConnection")
 const cors= require("cors");
+const {envVar,cloudinaryVar} = require('../src/config/config')
 const mainRouter= require("./Routers/index")
 import {Response,Request}  from "express"
+import { v2 as cloudinary } from 'cloudinary';
 
 const app = express();
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 
