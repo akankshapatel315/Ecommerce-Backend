@@ -1,16 +1,13 @@
-const stripe = require("stripe")(
-  "sk_test_51PVaDt083iHcWeEmzSJVT17dEeFWFZljOakBG3HcKOf8arwRy5bu0HIuzEhe8FeI0uNGLeMtRgcOVkKVewKRoMDL00WQ63LtDJ"
-);
+const stripe = require("stripe")(process.env.API_KEY);
 
 const customer = async (req:any, res:any) => {
     const { products } = req.body;
-    
     const lineItems = products.map((product:any) => ({
       price_data: {
         currency: 'inr',
         product_data: {
           name: product.productName,
-          image:product.image,
+          images:[product.productImg],
           description:product.description
         },
         unit_amount: product.productPrice*100, // Convert to cents

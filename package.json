@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "set NODE_ENV=dev&& nodemon src/index.ts",
+    "prod": "set NODE_ENV=prod&& nodemon src/index.ts"
+
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "7.0.3",
+    "path": "^0.12.7",
     "stripe": "^16.0.0"
   },
   "devDependencies": {
